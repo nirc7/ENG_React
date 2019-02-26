@@ -11,21 +11,22 @@ export default class StudentC extends Component {
                 grade: Math.round(Math.random() * 40 + 60) + props.factor,
                 txtNumber: 1,
             };
-    }
+    }    
 
     btnClicked = () => {
         //alert(this.number);
         //this.number = 100;
+        //alert(this.number);
         // this.setState({
         //     txtNumber:100
+        // });        
+
+        // this.setState({
+        //     txtNumber:this.state.txtNumber*2
         // });
 
-        this.setState({
-            txtNumber:this.state.txtNumber*2
-        });
-
-        // this.setState((prevState, props) =>
-        //     ({ txtNumber: prevState.txtNumber *2}));
+        this.setState((prevState) =>
+            ({ txtNumber: prevState.txtNumber *2}));
 
     }
 
@@ -46,7 +47,8 @@ export default class StudentC extends Component {
                 <input type="text"
                     placeholder="insert your number"
                     onChange={this.txtChenged} />
-                the number={this.state.txtNumber}
+                the number={this.state.txtNumber}<br/>
+                this.number= {this.number}
             </div>
         );
     }
