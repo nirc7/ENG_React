@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Child from './Child.jsx';
+import FormElements from './FormElements';
 
 export default class Login extends Component {
     constructor(props) {
@@ -29,7 +31,7 @@ export default class Login extends Component {
             this.setState({
                 resLabel: 'you r logged in!',
                 show: true
-            });
+            },()=>{ alert('setState was finished to run!') }); //run code AFTER setstate finished running!!!
             this.res = "yes";
         } else {
             this.setState({
@@ -57,22 +59,34 @@ export default class Login extends Component {
         console.log(this.txtPassValue);
     }
 
+    getData = (data) => {
+        alert('from parent with data from child =' + data);
+        this.setState({
+            childName: data
+        });
+    }
+
     render() {
-        //opt2
+        /*opt2*/
         let lbl;
         if (this.state.show) {
-          lbl =  <div style={{ color: 'green' }}>yes u r logged in:)</div>;
-        } 
- 
+            lbl = <div style={{ color: 'green' }}>yes u r logged in:)</div>;
+        }
+
         return (
             <div>login <br /><br />
                 NAME:<input type="text" onChange={this.txtNameChanged} /><br /><br />
                 PASS:<input type="text" onChange={this.txtPassChanged} /><br /><br />
                 <input type="button" value="push" onClick={this.btnLogin} /><br /><br />
                 r u logged in? <div style={{}} > {this.state.resLabel} </div><br /><br />
-                {this.res}
-                {lbl}
-                {/*opt1*/this.state.show && <div style={{ color: 'red', fontSize:40 }}>yes u r logged in:)</div>}
+                {this.res}<br /><br />
+                {lbl}<br /><br />
+                {/*opt1*/this.state.show && <div style={{ color: 'red', fontSize: 40 }}>yes u r logged in:)</div>}<br /><br />
+                {/*opt1*/!this.state.show && "?;"}<br /><br />
+                {/*opt3*/ this.state.show ? <div style={{ color: 'red', fontSize: 40 }}>yes u r logged in:)</div> : "?:"}<br /><br />
+                <Child sendData={this.getData}/><br/><br/>
+                SHALOM={this.state.childName} <br/><br/> 
+                <FormElements/>
             </div>
         );
     }
