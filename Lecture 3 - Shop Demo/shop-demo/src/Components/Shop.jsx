@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ItemsC from './ItemsC.jsx';
 import Item from '../Classes/Item';
 import ItemsInCart from './ItemsInCart.jsx';
+import './Styles/Shop.css';
 
 class Shop extends Component {
     constructor(props) {
@@ -22,22 +23,33 @@ class Shop extends Component {
         };
     }
 
-    getItemToMove = (itemIdToMove) => {
-        console.log(itemIdToMove);
-        // let newItems = this.state.items.filter(item => 
-        //     {
-        //         //console.log(typeof( itemIdToMove));
-        //         return item.id != itemIdToMove
-        //     });
-
-        let newItems = this.state.items.filter(item => item.id != itemIdToMove);
-        let newItemsInCart = [...this.state.itemsInCart, this.state.items.filter(item => item.id == itemIdToMove)[0]];
+    getItemObjToMove = (itemToMove) => {
+        console.log('itemToMove=' , itemToMove);
+        let newItems = this.state.items.filter(item => item != itemToMove);
+        let newItemsInCart = [...this.state.itemsInCart, itemToMove ];
         console.log(newItems);
         this.setState({
             items: newItems,
             itemsInCart: newItemsInCart
         });
     }
+
+    // getItemToMove = (itemIdToMove) => {
+    //     console.log(itemIdToMove);
+    //     // let newItems = this.state.items.filter(item => 
+    //     //     {
+    //     //         //console.log(typeof( itemIdToMove));
+    //     //         return item.id != itemIdToMove
+    //     //     });
+
+    //     let newItems = this.state.items.filter(item => item.id != itemIdToMove);
+    //     let newItemsInCart = [...this.state.itemsInCart, this.state.items.filter(item => item.id == itemIdToMove)[0]];
+    //     console.log(newItems);
+    //     this.setState({
+    //         items: newItems,
+    //         itemsInCart: newItemsInCart
+    //     });
+    // }
 
     getItemToMoveBackToItems = (itemIdToMove) => {
         console.log(itemIdToMove);
@@ -59,13 +71,22 @@ class Shop extends Component {
     render() {
         console.log(this.state.itemsInCart);
         return (
-            <div style={{ margin: 20 }}>
+            <div className='main-container' style={{ margin: 20 }}>
                 <center>
-                    <ItemsInCart  sendItemToMoveBackToItems={this.getItemToMoveBackToItems} items={this.state.itemsInCart} />
-                    shop
+                    <div className='navbar'>
+                        <div style={{ flex: 3 }}>shop</div>
+                        <div className='right-navbar'>
+                            <ItemsInCart
+                                sendItemToMoveBackToItems={this.getItemToMoveBackToItems}
+                                items={this.state.itemsInCart}
+                            />
+                        </div>
+
+                    </div>
                     <ItemsC
                         items={this.state.items}
-                        sendItemToMove={this.getItemToMove} />
+                        sendItemToMove={this.getItemToMove}
+                        sendItemObjToMove={this.getItemObjToMove} />
                 </center>
             </div>
         );
