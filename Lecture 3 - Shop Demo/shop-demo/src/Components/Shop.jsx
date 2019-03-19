@@ -24,10 +24,8 @@ class Shop extends Component {
     }
 
     getItemObjToMove = (itemToMove) => {
-        console.log('itemToMove=' , itemToMove);
         let newItems = this.state.items.filter(item => item != itemToMove);
-        let newItemsInCart = [...this.state.itemsInCart, itemToMove ];
-        console.log(newItems);
+        let newItemsInCart = [...this.state.itemsInCart, itemToMove];
         this.setState({
             items: newItems,
             itemsInCart: newItemsInCart
@@ -52,16 +50,13 @@ class Shop extends Component {
     // }
 
     getItemToMoveBackToItems = (itemIdToMove) => {
-        console.log(itemIdToMove);
         // let newItems = this.state.items.filter(item => 
         //     {
         //         //console.log(typeof( itemIdToMove));
         //         return item.id != itemIdToMove
         //     });
-
         let newItemsInCart = this.state.itemsInCart.filter(item => item.id != itemIdToMove);
         let newItems = [...this.state.items, this.state.itemsInCart.filter(item => item.id == itemIdToMove)[0]];
-        console.log(newItems);
         this.setState({
             items: newItems,
             itemsInCart: newItemsInCart
@@ -69,7 +64,6 @@ class Shop extends Component {
     }
 
     render() {
-        console.log(this.state.itemsInCart);
         return (
             <div className='main-container' style={{ margin: 20 }}>
                 <center>
@@ -81,12 +75,13 @@ class Shop extends Component {
                                 items={this.state.itemsInCart}
                             />
                         </div>
-
                     </div>
                     <ItemsC
                         items={this.state.items}
-                        sendItemToMove={this.getItemToMove}
-                        sendItemObjToMove={this.getItemObjToMove} />
+                        // sendItemToMove={this.getItemToMove}
+                        // sendItemObjToMove={this.getItemObjToMove} 
+                        sendItemObjToMoveFromItemsC={this.getItemObjToMove}
+                    />
                 </center>
             </div>
         );
