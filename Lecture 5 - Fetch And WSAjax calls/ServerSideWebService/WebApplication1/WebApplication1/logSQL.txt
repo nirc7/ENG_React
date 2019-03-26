@@ -1,0 +1,30 @@
+Cannot open database "UserDB2" requested by the login. The login failed.
+Login failed for user 'RUPPINDOM\a00'., 26/03/2019 10:37:08, id=3
+
+Cannot open database "UserDB2" requested by the login. The login failed.
+Login failed for user 'RUPPINDOM\a00'.
+
+ 26/03/2019 10:42:10
+
+id=3
+
+_______________
+
+Cannot open database "UserDB2" requested by the login. The login failed.
+Login failed for user 'RUPPINDOM\a00'.
+
+ 26/03/2019 10:43:08
+
+id=3
+
+_______________
+
+Cannot open database "UserDB2" requested by the login. The login failed.
+Login failed for user 'RUPPINDOM\a00'.
+
+ 26/03/2019 10:43:44
+
+id=3
+
+_______________
+
