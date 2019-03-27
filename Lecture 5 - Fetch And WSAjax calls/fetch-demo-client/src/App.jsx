@@ -122,7 +122,7 @@ class App extends Component {
     }
   }
 
-  fetchCall(webServiceURL, functionName, data, returnFuncName) {
+  fetchCall(webServiceURL, functionName, data, onSuccess) {
 
     fetch(`${SERVERURL}${webServiceURL}/${functionName}`, {
       method: 'post',
@@ -140,7 +140,7 @@ class App extends Component {
           console.log("fetch POST= ", result);
           console.log("fetch POST.d= ", result.d);
           let info = JSON.parse(result.d);
-          returnFuncName(info);
+          onSuccess(info);
         },
         (error) => {
           console.log("err post=", error);
